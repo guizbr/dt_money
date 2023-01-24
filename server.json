@@ -23,6 +23,30 @@
       "type": "outcome",
       "createdAt": "2023-01-24T13:06:30.541Z",
       "id": 3
+    },
+    {
+      "description": "Desenvolvimento de app",
+      "price": 1000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2023-01-27T15:06:30.541Z",
+      "id": 4
+    },
+    {
+      "description": "Ida ao parque",
+      "price": 120,
+      "category": "Lazer",
+      "type": "outcome",
+      "createdAt": "2023-01-30T17:30:30.541Z",
+      "id": 5
+    },
+    {
+      "description": "Compra de uma moto",
+      "price": 7000,
+      "category": "Compra",
+      "type": "outcome",
+      "createdAt": "2023-01-24T19:32:47.891Z",
+      "id": 6
     }
   ]
 }
