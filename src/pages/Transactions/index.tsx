@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useContextSelector } from 'use-context-selector'
+import { TagSimple, CalendarBlank } from 'phosphor-react'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
@@ -45,7 +46,7 @@ export function Transaction() {
 	}
 
 	return (
-		<div>
+		<>
 			<Header></Header>
 			<Summary></Summary>
 
@@ -62,13 +63,22 @@ export function Transaction() {
 										{priceFormatter.format(transaction.price)}
 									</PriceHighligh>
 								</td>
-								<td>{transaction.category}</td>
-								<td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
+								<td>
+									<TagSimple size={14}></TagSimple>
+
+									{transaction.category}
+								</td>
+								<td>
+									<CalendarBlank size={14}></CalendarBlank>
+
+									{dateFormatter.format(new Date(transaction.createdAt))}
+								</td>
 							</tr>
 						))}
 					</tbody>
 				</TransactionsTable>
 				<Pagination
+					currentPage={currentPage}
 					transactionsPerPage={transactionsPerPage}
 					totalTransactions={totalTransactions}
 					paginate={paginate}
@@ -76,6 +86,6 @@ export function Transaction() {
 					nextPage={nextPage}
 				></Pagination>
 			</TransactionsContainer>
-		</div>
+		</>
 	)
 }

@@ -9,6 +9,7 @@ import {
 } from './styles'
 
 interface PaginationProps {
+	currentPage: number
 	transactionsPerPage: number
 	totalTransactions: number
 	paginate: (pageNumber: number) => void
@@ -17,6 +18,7 @@ interface PaginationProps {
 }
 
 export function Pagination({
+	currentPage,
 	transactionsPerPage,
 	totalTransactions,
 	paginate,
@@ -36,15 +38,24 @@ export function Pagination({
 	return (
 		<PaginationContainer>
 			<PaginationList>
-				<PaginationLeftArrow onClick={previousPage}>
+				<PaginationLeftArrow onClick={previousPage} variant={currentPage === 1}>
 					<CaretLeft size={24}></CaretLeft>
 				</PaginationLeftArrow>
 				{pageNumbers.map((number) => (
-					<PaginationNumber key={number} onClick={() => paginate(number)}>
+					<PaginationNumber
+						key={number}
+						onClick={() => paginate(number)}
+						variant={currentPage === number ? 'current' : 'not-current'}
+					>
 						{number}
 					</PaginationNumber>
 				))}
-				<PaginationRightArrow onClick={nextPage}>
+				<PaginationRightArrow
+					onClick={nextPage}
+					variant={
+						currentPage < Math.ceil(totalTransactions / transactionsPerPage)
+					}
+				>
 					<CaretRight size={24}></CaretRight>
 				</PaginationRightArrow>
 			</PaginationList>
